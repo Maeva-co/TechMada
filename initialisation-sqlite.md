@@ -50,3 +50,9 @@ at SYSTEMPATH/Database/BaseConnection.php:865
 ```
 -> dans Datapase.php : 'foreignKeys'  => true,
 -> simplifier les foreign keys
+
+## creer seeders
+```php spark make:seeder DepartementSeeder```
+
+## lancer seeders
+``` php spark db:seed MainSeeder ```

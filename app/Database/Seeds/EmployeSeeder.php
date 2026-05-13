@@ -10,9 +10,8 @@ class EmployeSeeder extends Seeder
     {
         $data = [
             [
-                'nom'            => 'Admin',
-                'prenom'         => 'Système',
-                'email'          => 'admin@entreprise.com',
+                'nom'            => 'Administrateur',
+                'email'          => 'admin@techmada.mg',
                 'password'       => 'admin123',
                 'role'           => 'admin',
                 'departement_id' => 1,
@@ -20,10 +19,18 @@ class EmployeSeeder extends Seeder
                 'actif'          => 1
             ],
             [
-                'nom'            => 'Dupont',
-                'prenom'         => 'Jean',
-                'email'          => 'j.dupont@entreprise.com',
-                'password'       => 'user123',
+                'nom'            => 'Responsable RH',
+                'email'          => 'j.dupont@techmada.mg',
+                'password'       => 'rh123',
+                'role'           => 'rh',
+                'departement_id' => 2,
+                'date_embauche'  => '2024-02-15',
+                'actif'          => 1
+            ],
+            [
+                'nom'            => 'Employe',
+                'email'          => 'j.dupont@techmada.mg',
+                'password'       => 'emp123',
                 'role'           => 'employe',
                 'departement_id' => 2,
                 'date_embauche'  => '2024-02-15',

@@ -11,7 +11,7 @@ class CreateEmployes extends Migration
         $this->forge->addField([
             'id'              => ['type' => 'INTEGER', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom'             => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => false],
-            'prenom'          => ['type' => 'VARCHAR', 'constraint' => 100],
+            'prenom'          => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'email'           => ['type' => 'VARCHAR', 'constraint' => 150, 'unique' => true, 'null' => false],
             'password'        => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => false],
             'role'            => ['type' => 'VARCHAR', 'constraint' => 50, 'null' => false],

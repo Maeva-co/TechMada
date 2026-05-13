@@ -34,6 +34,9 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+
+        'auth' => AuthFilter::class,
+        'role' => RoleFilter::class,
     ];
 
     /**
@@ -60,20 +63,20 @@ class Filters extends BaseFilters
             'toolbar',     // Debug Toolbar
         ],
     ];
-
+    
     /**
      * List of filter aliases that are always
      * applied before and after every request.
-     *
+    *
      * @var array{
      *     before: array<string, array{except: list<string>|string}>|list<string>,
      *     after: array<string, array{except: list<string>|string}>|list<string>
      * }
-     */
+    */
     public array $globals = [
         'before' => [
+            'csrf',
             // 'honeypot',
-            // 'csrf',
             // 'invalidchars',
         ],
         'after' => [

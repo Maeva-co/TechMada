@@ -57,6 +57,7 @@
             <div>
             <div class="form-section">
                 <form method="post" action="<?= base_url('employe/store') ?>">
+                    <?= csrf_field() ?>
                     <h3>Détails de la demande</h3>
 
                     <div class="f-group" style="margin-bottom:1rem">
@@ -112,7 +113,7 @@
                 <div style="padding:.75rem 1.1rem;display:flex;flex-direction:column;gap:.75rem">
                 <div>
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-                    <span style="font-size:.8rem;color:var(--ink)"><?= esc($solde['libelle']) ?></span>
+                    <span style="font-size:.8rem;color:var(--ink)"><?= esc($soldes['libelle']) ?></span>
                     <span style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--forest);font-weight:500"><?= $solde['jours_attribues'] - $solde['jours_pris'] ?> j</span>
                     </div>
                     <?php

@@ -48,6 +48,23 @@ class EmployeController extends BaseController {
         return view('employe/create', $data);
     }
 
+    // public function create() {
+    //     $userId = session()->get('user_id');
+
+    //     $typeModel = new TypeCongeModel();
+    //     $soldeModel = new SoldeModel();
+
+    //     $allSoldes = $soldeModel->getByEmploye($userId);
+        
+    //     $data = [
+    //         'types' => $typeModel->getAllTypes(),
+    //         'soldes' => $allSoldes,  // Pour affichage si besoin
+    //         'solde' => $allSoldes[0] ?? [],  // Le solde principal à afficher
+    //     ];
+
+    //     return view('employe/create', $data);
+    // }
+
     // traitement formulaire
     public function store() {
         $userId = session()->get('user_id');

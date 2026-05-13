@@ -17,7 +17,9 @@ $routes->get('auth/logout', 'AuthController::logout', ['filter' => 'auth']);
 $routes->group('employe', ['filter' => ['auth', 'role:employe']], function($routes) {
     $routes->get('dashboard', 'EmployeController::dashboard');
     $routes->get('create', 'EmployeController::create');
+    $routes->post('store', 'EmployeController::store');
     $routes->get('index', 'EmployeController::index');
+    $routes->get('cancel/(:num)', 'EmployeController::cancel/$1');
 });
 
 // Routes RH (authentifié + rôle)

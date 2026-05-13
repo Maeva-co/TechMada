@@ -9,14 +9,20 @@ $routes->get('/', 'Home::index');
 
 $routes->get('auth/login', 'AuthController::login');
 
-$routes->get('/employe/dashboard', 'EmployeController::dashboard');
-$routes->get('/employe/create', 'EmployeController::create');
-$routes->get('/employe/index', 'EmployeController::index');
+$routes->group('employe', function($routes) {
+    $routes->get('dashboard', 'EmployeController::dashboard');
+    $routes->get('create', 'EmployeController::create');
+    $routes->get('index', 'EmployeController::index');
+});
 
-$routes->get('/rh/index', 'RhController::index');
+$routes->group('rh', function($routes) {
+    $routes->get('index', 'RhController::index');
+});
 
-$routes->get('/admin/dashboard', 'AdminController::dashboard');
-$routes->get('/admin/employes', 'AdminController::employes');
+$routes->group('admin', function($routes) {
+    $routes->get('dashboard', 'AdminController::dashboard');
+    $routes->get('employes', 'AdminController::employes');
+});
 
 
 

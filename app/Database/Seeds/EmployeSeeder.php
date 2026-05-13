@@ -20,7 +20,7 @@ class EmployeSeeder extends Seeder
             ],
             [
                 'nom'            => 'Responsable RH',
-                'email'          => 'j.dupont@techmada.mg',
+                'email'          => 'rh@techmada.mg',
                 'password'       => password_hash('rh123', PASSWORD_DEFAULT),
                 'role'           => 'rh',
                 'departement_id' => 2,
@@ -29,7 +29,7 @@ class EmployeSeeder extends Seeder
             ],
             [
                 'nom'            => 'Employe',
-                'email'          => 'j.dupont@techmada.mg',
+                'email'          => 'employe@techmada.mg',
                 'password'       => password_hash('emp123', PASSWORD_DEFAULT),
                 'role'           => 'employe',
                 'departement_id' => 2,

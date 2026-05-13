@@ -2,9 +2,17 @@
 
 namespace App\Controllers;
 
-class AuthController extends BaseController {
+use App\Models\EmployeModel;
+
+class AuthController extends BaseController
+{
     public function form()
     {
+        // Si l'utilisateur est déjà connecté, rediriger vers son dashboard
+        if (session()->get('user')) {
+            return redirect()->to('/' . session()->get('user')['role'] . '/dashboard');
+        }
+
         return view('auth/login');
     }
 
@@ -20,8 +28,7 @@ class AuthController extends BaseController {
         $user = $model->where('email', $email)->first();
         if (!$user || !password_verify($password, $user['password'])) {
             return view('auth/login', [
-            'erreur' => 'Email ou mot de passe incorrect'
-            ]);
+            'erreur' => 'Email ou mot de passe incorrect']);
         }
         // Stocker uniquement les données non sensibles en session
         session()->set('user', [
@@ -30,12 +37,12 @@ class AuthController extends BaseController {
             'email' => $user['email'],
             'role' => $user['role'],
         ]);
-        return redirect()->to('/livres');
+        return redirect()->to('/'. $user['role'] . '/dashboard');
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/auth/login')->with('success', 'Vous avez été déconnecté avec succès.');
     }
 }

@@ -5,11 +5,16 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
 
-$routes->get('auth/login', 'AuthController::login');
+$routes->get('/', 'AuthController::form');
+$routes->get('auth/login', 'AuthController::form');
 
-$routes->group('employe', function($routes) {
+$routes->post('auth/login', 'AuthController::login');
+
+$routes->get('auth/logout', 'AuthController::logout', ['filter' => 'auth']);
+
+// Routes employé (authentifié + rôle)
+$routes->group('employe', ['filter' => ['auth', 'role:employe']], function($routes) {
     $routes->get('dashboard', 'EmployeController::dashboard');
     $routes->get('create', 'EmployeController::create');
     $routes->post('store', 'EmployeController::store');
@@ -17,13 +22,17 @@ $routes->group('employe', function($routes) {
     $routes->get('cancel/(:num)', 'EmployeController::cancel/$1');
 });
 
-$routes->group('rh', function($routes) {
-    $routes->get('index', 'RhController::index');
+// Routes RH (authentifié + rôle)
+$routes->group('rh', ['filter' => ['auth', 'role:rh']], function($routes) {
+    $routes->get('dashboard', 'RhController::index');
+    $routes->get('conges/approuver', 'RhController::approuver');
 });
 
-$routes->group('admin', function($routes) {
+// Routes admin (authentifié + rôle)
+$routes->group('admin', ['filter' => ['auth', 'role:admin']], function($routes) {
     $routes->get('dashboard', 'AdminController::dashboard');
     $routes->get('employes', 'AdminController::employes');
+    $routes->post('employes/create', 'AdminController::createEmploye');
 });
 
 

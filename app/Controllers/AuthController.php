@@ -2,40 +2,46 @@
 
 namespace App\Controllers;
 
-class AuthController extends BaseController {
+use App\Models\EmployeModel;
+
+class AuthController extends BaseController
+{
     public function form()
     {
         return view('auth/login');
     }
 
-    // public function login() {
-    //     return view('auth/login');
-    // }
-
     public function login()
     {
-        $model = new UserModel();
+        $model = new EmployeModel();
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-        $user = $model->where('email', $email)->first();
-        if (!$user || !password_verify($password, $user['password'])) {
-            return view('auth/login', [
-            'erreur' => 'Email ou mot de passe incorrect'
-            ]);
+        
+        // Rechercher l'employé par email
+        $employe = $model->where('email', $email)->first();
+        
+        if (!$employe || !password_verify($password, $employe['password'])) {
+            return redirect()->back()->with('error', 'Email ou mot de passe incorrect');
         }
-        // Stocker uniquement les données non sensibles en session
+
+        if (!$employe['actif']) {
+            return redirect()->back()->with('error', 'Votre compte est désactivé');
+        }
+
         session()->set('user', [
-            'id' => $user['id'],
-            'nom' => $user['nom'],
-            'email' => $user['email'],
-            'role' => $user['role'],
+            'id'    => $employe['id'],
+            'nom'   => $employe['nom'],
+            'prenom' => $employe['prenom'],
+            'email' => $employe['email'],
+            'role'  => $employe['role'],
         ]);
-        return redirect()->to('/livres');
+
+        return redirect()->to($employe['role'] . '/dashboard');
     }
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/')->with('success', 'Vous avez été déconnecté avec succès.');
     }
 }

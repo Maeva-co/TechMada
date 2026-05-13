@@ -32,6 +32,7 @@
             </a>
         </li>
         <li><a href="#page-profil-employe"><i class="bi bi-person"></i> Mon profil</a></li>
+        <li><a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i>Déconnexion</a></li>
         </ul>
         <div class="sidebar-user">
         <div class="s-user-row">
@@ -41,7 +42,6 @@
             </div>
             <div class="user-role"><?= esc(session()->get('role')) ?> · IT</div>
             </div>
-            <a href="#page-login" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem" title="Déconnexion"><i class="bi bi-box-arrow-right"></i></a>
         </div>
         </div>
     </aside>

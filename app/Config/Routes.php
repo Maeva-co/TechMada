@@ -12,7 +12,9 @@ $routes->get('auth/login', 'AuthController::login');
 $routes->group('employe', function($routes) {
     $routes->get('dashboard', 'EmployeController::dashboard');
     $routes->get('create', 'EmployeController::create');
+    $routes->post('store', 'EmployeController::store');
     $routes->get('index', 'EmployeController::index');
+    $routes->get('cancel/(:num)', 'EmployeController::cancel/$1');
 });
 
 $routes->group('rh', function($routes) {

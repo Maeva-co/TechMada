@@ -95,5 +95,87 @@
 
 
 - Controllers
-    - EmployeController.php
-        - 
+    - [ok] EmployeController.php
+        - fonction dashboard
+            [ok] prendre session
+            [ok] prendre les attentes, approbations,refus
+            [ok] pendre les soldes
+            [ok] prendre les demandes
+
+- View
+    [ok] rendre la vue dynamique
+
+    
+### create
+
+- Models
+    - [ok] TypeCongeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+        - methodes
+            - prendre tous les types de congé
+
+- Controllers
+    - [ok] EmployeController.php
+        - [ok] fonction create
+            - prendre session
+            - prendre types de congé
+            - prendre soldes employé
+            - retourner vue create
+
+        - [ok] fonction store
+            - validation formulaire
+            - calcul nombre de jours
+            - insertion demande congé
+            - statut en_attente par défaut
+            - redirect + flash message
+
+- Routes
+    - [ok] employe/store
+
+- View
+    - [ok] rendre le formulaire dynamique
+        - select types de congé dynamique
+        - soldes dynamiques
+        - erreurs validation CI4
+        - formulaire POST
+        - affichage ancien input
+
+    - [ok] calcul dynamique
+        - nombre de jours demandés
+        - pourcentage soldes
+
+### index (Mes demandes)
+- Models
+    - [ok] CongeModel.php
+        - methodes
+            - getByEmploye(id)
+            - join avec types_conge
+            - tri par date DESC
+
+    - [ok] TypeCongeModel.php
+        - utilisé pour libellé (optionnel si join)
+
+- Controllers
+    - [ok]  EmployeController.php
+        - [ok] fonction index()
+            - prendre session user_id
+            - récupérer toutes les demandes de congé
+            - join types_conge
+            - envoyer vers vue
+
+        - [ok] fonction cancel()
+            - vérifier statut = en_attente uniquement
+            - update statut = annulée
+            - redirect avec message flash
+
+- Routes
+    - [ok] employe/cancel/{id}
+
+- View
+    - [ok] employe/index.php
+        - liste des demandes depuis DB
+        - affichage statut dynamique
+        - affichage commentaire RH dynamique
+        - bouton annuler conditionnel (si en_attente)

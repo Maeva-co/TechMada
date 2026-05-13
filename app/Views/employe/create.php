@@ -28,8 +28,12 @@
         </ul>
         <div class="sidebar-user">
         <div class="s-user-row">
-            <div class="avatar av-green">SR</div>
-            <div><div class="user-name">Soa Rakoto</div><div class="user-role">Employé · IT</div></div>
+            <div class="avatar av-green">USER</div>
+            <div><div class="user-name">
+                <?= esc(session()->get('prenom') . ' ' . session()->get('nom')) ?>
+            </div>
+            <div class="user-role"><?= esc(session()->get('role')) ?> · IT</div>
+        </div>
         </div>
         </div>
     </aside>
@@ -52,49 +56,53 @@
             <!-- Formulaire principal -->
             <div>
             <div class="form-section">
-                <h3>Détails de la demande</h3>
+                <form method="post" action="<?= base_url('employe/store') ?>">
+                    <h3>Détails de la demande</h3>
 
-                <div class="f-group" style="margin-bottom:1rem">
-                <label class="f-label">Type de congé <span style="color:var(--danger)">*</span></label>
-                <select class="f-select">
-                    <option value="">-- Choisir un type --</option>
-                    <option value="1" selected>Congé annuel (18 j restants)</option>
-                    <option value="2">Congé maladie (8 j restants)</option>
-                    <option value="3">Congé spécial (1 j restant)</option>
-                    <option value="4">Sans solde</option>
-                </select>
-                <!-- Erreur validation CI4 -->
-                <div class="f-error"><i class="bi bi-exclamation-circle"></i> Ce champ est requis.</div>
-                </div>
+                    <div class="f-group" style="margin-bottom:1rem">
+                    <label class="f-label">Type de congé <span style="color:var(--danger)">*</span></label>
+                    <select class="f-select">
+                        <?php foreach ($types as $type) { ?>
+                            <option value="<?= $type['id'] ?>">
+                                <?= esc($type['libelle']) ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                    <!-- Erreur validation CI4 -->
+                    <div class="f-error"><i class="bi bi-exclamation-circle"></i> Ce champ est requis.</div>
+                    </div>
 
-                <div class="form-grid-2" style="margin-bottom:1rem">
-                <div class="f-group">
-                    <label class="f-label">Date de début <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="f-input" value="2025-06-23"/>
-                </div>
-                <div class="f-group">
-                    <label class="f-label">Date de fin <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="f-input" value="2025-06-27"/>
-                </div>
-                </div>
+                    <div class="form-grid-2" style="margin-bottom:1rem">
+                    <div class="f-group">
+                        <label class="f-label">Date de début <span style="color:var(--danger)">*</span></label>
+                        <input type="date" class="f-input" name="date_debut" required>
+                    </div>
+                    <div class="f-group">
+                        <label class="f-label">Date de fin <span style="color:var(--danger)">*</span></label>
+                        <input type="date" class="f-input" name="date_fin" required>
+                    </div>
+                    </div>
 
-                <!-- Calcul automatique côté PHP (affiché après soumission ou en JS) -->
-                <div class="f-computed">
-                <div class="f-computed-num">5</div>
-                <div class="f-computed-label">jours calendaires calculés<br><span style="font-size:.7rem;opacity:.7">du lundi 23 au vendredi 27 juin 2025</span></div>
-                </div>
+                    <!-- Calcul automatique côté PHP (affiché après soumission ou en JS) -->
+                    <div class="f-computed">
+                    <div class="f-computed-num">5</div>
+                    <div class="f-computed-label">jours calendaires calculés<br><span style="font-size:.7rem;opacity:.7">du lundi 23 au vendredi 27 juin 2025</span></div>
+                    </div>
 
-                <div class="f-group" style="margin-bottom:1rem">
-                <label class="f-label">Motif (optionnel)</label>
-                <textarea class="f-textarea" placeholder="Précisez le motif de votre demande si nécessaire..."></textarea>
-                <div class="f-hint">Le motif est visible par le responsable RH.</div>
-                </div>
+                    <div class="f-group" style="margin-bottom:1rem">
+                    <label class="f-label">Motif (optionnel)</label>
+                    <textarea class="f-textarea" name="motif" placeholder="Précisez le motif de votre demande si nécessaire..."></textarea>
+                    <div class="f-hint">Le motif est visible par le responsable RH.</div>
+                    </div>
 
-                <div class="form-actions">
-                <button class="btn-forest" type="submit"><i class="bi bi-send"></i> Soumettre la demande</button>
-                <a href="#page-dashboard-employe" class="btn-secondary"><i class="bi bi-x"></i> Annuler</a>
+                    <div class="form-actions">
+                    <button class="btn-forest" type="submit">
+                        <i class="bi bi-send"></i> Soumettre la demande
+                    </button>
+                    <a href="/employe/dashboard" class="btn-secondary"><i class="bi bi-x"></i> Annuler</a>
+                    </div>
                 </div>
-            </div>
+            </form>
             </div>
 
             <!-- Panneau latéral : solde & règles -->
@@ -104,25 +112,13 @@
                 <div style="padding:.75rem 1.1rem;display:flex;flex-direction:column;gap:.75rem">
                 <div>
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-                    <span style="font-size:.8rem;color:var(--ink)">Congé annuel</span>
-                    <span style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--forest);font-weight:500">18 j</span>
+                    <span style="font-size:.8rem;color:var(--ink)"><?= esc($solde['libelle']) ?></span>
+                    <span style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--forest);font-weight:500"><?= $solde['jours_attribues'] - $solde['jours_pris'] ?> j</span>
                     </div>
-                    <div class="solde-bar"><div class="solde-fill" style="width:60%"></div></div>
-                </div>
-                <div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-                    <span style="font-size:.8rem;color:var(--ink)">Maladie</span>
-                    <span style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--forest);font-weight:500">8 j</span>
-                    </div>
-                    <div class="solde-bar"><div class="solde-fill" style="width:80%"></div></div>
-                </div>
-                <div>
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-                    <span style="font-size:.8rem;color:var(--ink)">Spécial</span>
-                    <span style="font-family:'DM Mono',monospace;font-size:.8rem;color:var(--warn);font-weight:500">1 j</span>
-                    </div>
-                    <div class="solde-bar"><div class="solde-fill warn" style="width:20%"></div></div>
-                </div>
+                    <?php
+                        $percent = ($solde['jours_pris'] / $solde['jours_attribues']) * 100;
+                    ?>
+                    <div class="solde-bar"><div class="solde-fill" style="width:<?= $percent ?>%"></div></div>
                 </div>
             </div>
             <div class="flash flash-info" style="margin:0">

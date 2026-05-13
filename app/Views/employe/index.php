@@ -28,8 +28,11 @@
         </ul>
         <div class="sidebar-user">
         <div class="s-user-row">
-            <div class="avatar av-green">SR</div>
-            <div><div class="user-name">Soa Rakoto</div><div class="user-role">Employé · IT</div></div>
+            <div class="avatar av-green">USER</div>
+            <div><div class="user-name">
+                <?= esc(session()->get('prenom') . ' ' . session()->get('nom')) ?>
+            </div>
+            <div class="user-role"><?= esc(session()->get('role')) ?> · IT</div>
         </div>
         </div>
     </aside>
@@ -64,51 +67,37 @@
                 <tr><th>Type</th><th>Début</th><th>Fin</th><th>Durée</th><th>Statut</th><th>Commentaire RH</th><th>Action</th></tr>
             </thead>
             <tbody>
+                <?php foreach ($demandes as $d) { ?>
                 <tr>
-                <td><span class="type-badge t-annuel">Annuel</span></td>
-                <td class="td-muted">23 juin 2025</td>
-                <td class="td-muted">27 juin 2025</td>
-                <td class="td-mono">5 j</td>
-                <td><span class="statut s-attente">en attente</span></td>
-                <td class="td-muted" style="font-size:.78rem">—</td>
-                <td><button class="btn-sm btn-cancel"><i class="bi bi-x"></i> Annuler</button></td>
+                <td><span class="type-badge t-annuel"><?= esc($d['libelle']) ?></span></td>
+                <td class="td-muted"><?= esc($d['date_debut']) ?></td>
+                <td class="td-muted"><?= esc($d['date_fin']) ?></td>
+                <td class="td-mono"><?= esc($d['nb_jours']) ?> j</td>
+                 <td>
+                    <span class="statut s-<?= $d['statut'] ?>">
+                        <?= esc($d['statut']) ?>
+                    </span>
+                </td>
+                <td class="td-muted" style="font-size:.78rem">
+                    <?php if (!empty($d['commentaire_rh'])): ?>
+                        <?= esc($d['commentaire_rh']) ?>
+                    <?php else: ?>
+                        <span class="td-muted">—</span>
+                    <?php endif; ?>
+                </td>
+                <td>
+                    <?php if ($d['statut'] === 'en_attente'): ?>
+                        <a href="<?= base_url('employe/cancel/' . $d['id']) ?>"
+                        class="btn-sm btn-cancel">
+                            <i class="bi bi-x"></i> Annuler
+                        </a>
+                    <?php else: ?>
+                        <span class="td-muted">—</span>
+                    <?php endif; ?>
+
+                </td>                
                 </tr>
-                <tr>
-                <td><span class="type-badge t-maladie">Maladie</span></td>
-                <td class="td-muted">2 juin 2025</td>
-                <td class="td-muted">3 juin 2025</td>
-                <td class="td-mono">2 j</td>
-                <td><span class="statut s-approuvee">approuvée</span></td>
-                <td style="font-size:.78rem;color:var(--success)"><i class="bi bi-check-circle"></i> Validé</td>
-                <td><span class="td-muted" style="font-size:.75rem">—</span></td>
-                </tr>
-                <tr>
-                <td><span class="type-badge t-annuel">Annuel</span></td>
-                <td class="td-muted">12 mai 2025</td>
-                <td class="td-muted">16 mai 2025</td>
-                <td class="td-mono">5 j</td>
-                <td><span class="statut s-approuvee">approuvée</span></td>
-                <td style="font-size:.78rem;color:var(--success)"><i class="bi bi-check-circle"></i> OK</td>
-                <td><span class="td-muted" style="font-size:.75rem">—</span></td>
-                </tr>
-                <tr>
-                <td><span class="type-badge t-special">Spécial</span></td>
-                <td class="td-muted">5 avr. 2025</td>
-                <td class="td-muted">5 avr. 2025</td>
-                <td class="td-mono">1 j</td>
-                <td><span class="statut s-refusee">refusée</span></td>
-                <td style="font-size:.78rem;color:var(--danger)">Chevauchement détecté</td>
-                <td><span class="td-muted" style="font-size:.75rem">—</span></td>
-                </tr>
-                <tr>
-                <td><span class="type-badge t-sans-solde">Sans solde</span></td>
-                <td class="td-muted">10 mars 2025</td>
-                <td class="td-muted">12 mars 2025</td>
-                <td class="td-mono">3 j</td>
-                <td><span class="statut s-annulee">annulée</span></td>
-                <td class="td-muted" style="font-size:.78rem">Annulé par l'employé</td>
-                <td><span class="td-muted" style="font-size:.75rem">—</span></td>
-                </tr>
+                <?php } ?>
             </tbody>
             </table>
         </div>

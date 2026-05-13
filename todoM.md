@@ -65,18 +65,4 @@
             - retourne vers admin/dashboard
         - [ok] employes()
             - retourne vers admin/employes
-
-
-## Espace employe
-### dashboard
-- EmployeModel.php
-    - table, prinarykey, allowedfields
-    - validationRules
-    - validationMessages
-    - methodes
-        - getDemandeEnAttente()
-        - getDemandeApprouvee()
-        - getDemandeRefusee()
-        - getJoursRestant()
-
-    
+            

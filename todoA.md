@@ -19,4 +19,6 @@
 ## login 
 - recup les insertions dans form
 - verifier mail et mdp 
+- ajout fonction hash
 - mener vers la page d accueil
+- creer session 

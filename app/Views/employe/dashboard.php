@@ -70,23 +70,23 @@
         <div class="metrics">
             <div class="metric">
             <div class="metric-top"><div class="metric-icon mi-amber"><i class="bi bi-hourglass-split"></i></div></div>
-            <div class="metric-val">2</div>
+            <div class="metric-val"><?= $attente ?></div>
             <div class="metric-label">En attente</div>
             </div>
             <div class="metric">
             <div class="metric-top"><div class="metric-icon mi-green"><i class="bi bi-check-circle"></i></div></div>
-            <div class="metric-val">5</div>
+            <div class="metric-val"><?= $approuvee ?></div>
             <div class="metric-label">Approuvées</div>
             </div>
             <div class="metric">
             <div class="metric-top"><div class="metric-icon mi-forest"><i class="bi bi-calendar-check"></i></div></div>
-            <div class="metric-val">18</div>
+            <div class="metric-val"><?= $joursRestants ?></div>
             <div class="metric-label">Jours restants</div>
             <div class="metric-sub">sur 30 cette année</div>
             </div>
             <div class="metric">
             <div class="metric-top"><div class="metric-icon mi-red"><i class="bi bi-x-circle"></i></div></div>
-            <div class="metric-val">1</div>
+            <div class="metric-val"><?= $refusee ?></div>
             <div class="metric-label">Refusée</div>
             </div>
         </div>
@@ -95,6 +95,7 @@
         <div class="data-card">
             <div class="data-card-head"><h3>Mes soldes de congés — 2025</h3></div>
             <div style="padding:1rem 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem">
+            <?php foreach ($soldes as $solde) { ?>
             <div class="solde-card" style="margin:0">
                 <div class="solde-header">
                 <span class="solde-type">Congé annuel</span>
@@ -103,6 +104,7 @@
                 <div class="solde-bar"><div class="solde-fill" style="width:60%"></div></div>
                 <div class="solde-label">18 jours restants · 12 pris</div>
             </div>
+            <?php } ?>
             <div class="solde-card" style="margin:0">
                 <div class="solde-header">
                 <span class="solde-type">Congé maladie</span>

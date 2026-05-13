@@ -66,3 +66,34 @@
         - [ok] employes()
             - retourne vers admin/employes
             
+    
+## Espace employe
+### dashboard
+- Models
+    - [ok] EmployeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+
+    - [ok] CongeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+        - timestamps
+        - methodes
+            - compteur par statut
+            - prendre derniere demande
+            - prendre toutes les demandes
+
+    - [ok] SoldeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+        - methodes
+            - getSolde par employe
+            - get jours restants total
+
+
+- Controllers
+    - EmployeController.php
+        - 

@@ -65,18 +65,35 @@
             - retourne vers admin/dashboard
         - [ok] employes()
             - retourne vers admin/employes
-
-
+            
+    
 ## Espace employe
 ### dashboard
-- EmployeModel.php
-    - table, prinarykey, allowedfields
-    - validationRules
-    - validationMessages
-    - methodes
-        - getDemandeEnAttente()
-        - getDemandeApprouvee()
-        - getDemandeRefusee()
-        - getJoursRestant()
+- Models
+    - [ok] EmployeModel.php
+        - table
+        - primaryKey
+        - allowedFields
 
-    
+    - [ok] CongeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+        - timestamps
+        - methodes
+            - compteur par statut
+            - prendre derniere demande
+            - prendre toutes les demandes
+
+    - [ok] SoldeModel.php
+        - table
+        - primaryKey
+        - allowedFields
+        - methodes
+            - getSolde par employe
+            - get jours restants total
+
+
+- Controllers
+    - EmployeController.php
+        - 

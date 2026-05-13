@@ -31,6 +31,9 @@ $routes->group('admin', ['filter' => ['auth', 'role:admin']], function($routes) 
     $routes->get('dashboard', 'AdminController::dashboard');
     $routes->get('employes', 'AdminController::employes');
     $routes->post('employes/create', 'AdminController::createEmploye');
+    $routes->get('employes/edit/(:num)', 'AdminController::editEmploye/$1');
+    $routes->post('employes/update/(:num)', 'AdminController::updateEmploye/$1');
+    $routes->get('employes/deactivate/(:num)', 'AdminController::deactivateEmploye/$1');
 });
 
 

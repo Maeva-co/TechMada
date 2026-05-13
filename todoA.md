@@ -24,10 +24,10 @@
 [ok] - creer session 
 
 ## admin
-- crud employe
-    - list
-    - ajout
-    - edit 
+[ok]- crud employe
+[ok]    - list
+[ok]    - ajout
+[ok]    - edit (desactiver)
 
 - crud departement
     - ajout

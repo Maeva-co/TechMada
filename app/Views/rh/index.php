@@ -31,12 +31,13 @@
         </li>
         <li><a href="#page-liste-rh"><i class="bi bi-archive"></i> Historique</a></li>
         <li><a href="#page-liste-rh"><i class="bi bi-people"></i> Soldes employés</a></li>
+        <li><a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i>Déconnexion</a></li>
         </ul>
         <div class="sidebar-user">
         <div class="s-user-row">
             <div class="avatar av-blue">MR</div>
             <div><div class="user-name">Marie Rabe</div><div class="user-role">Responsable RH</div></div>
-            <a href="#page-login" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i></a>
+            <a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem" title="Déconnexion"><i class="bi bi-box-arrow-right"></i></a>
         </div>
         </div>
     </aside>

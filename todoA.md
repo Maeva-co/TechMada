@@ -17,8 +17,24 @@
 [ok]     - main 
 
 ## login 
-- recup les insertions dans form
-- verifier mail et mdp 
-- ajout fonction hash
-- mener vers la page d accueil
-- creer session 
+[ok] - recup les insertions dans form
+[ok] - verifier mail et mdp 
+[ok] - ajout fonction hash
+[ok] - mener vers la page d accueil
+[ok] - creer session 
+
+## admin
+- crud employe
+    - list
+    - ajout
+    - edit 
+
+- crud departement
+    - ajout
+
+- crud type conge
+    - ajout
+
+dashboard
+    - absences du moi actuel
+

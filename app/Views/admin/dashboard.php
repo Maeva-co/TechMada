@@ -35,12 +35,13 @@
         <li><a href="#page-admin-employes"><i class="bi bi-building"></i> Départements</a></li>
         <li><a href="#page-admin-employes"><i class="bi bi-tags"></i> Types de congé</a></li>
         <li><a href="#page-admin-employes"><i class="bi bi-sliders"></i> Soldes annuels</a></li>
+        <li><a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i>Déconnexion</a></li>
         </ul>
         <div class="sidebar-user">
         <div class="s-user-row">
             <div class="avatar" style="background:#5a2d82;width:32px;height:32px;font-size:.7rem">AD</div>
             <div><div class="user-name">Administrateur</div><div class="user-role">Admin système</div></div>
-            <a href="#page-login" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i></a>
+            <a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem" title="Déconnexion"><i class="bi bi-box-arrow-right"></i></a>
         </div>
         </div>
     </aside>

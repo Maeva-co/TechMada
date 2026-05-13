@@ -1,0 +1,40 @@
+# Logs
+writable/logs/
+*.log
+
+# Database
+writable/database.sqlite
+*.db
+
+# Cache
+writable/cache/
+writable/debugbar/
+
+# Session
+writable/session/
+
+# Uploads
+writable/uploads/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Composer
+composer.lock

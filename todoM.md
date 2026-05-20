@@ -179,3 +179,10 @@
         - affichage statut dynamique
         - affichage commentaire RH dynamique
         - bouton annuler conditionnel (si en_attente)
+
+
+
+
+## Suite
+- Cote Employe
+    - Vue calendrier

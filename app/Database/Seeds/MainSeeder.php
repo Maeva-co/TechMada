@@ -11,6 +11,8 @@ class MainSeeder extends Seeder
         $this->call('DepartementSeeder');
         $this->call('TypeCongeSeeder');
         $this->call('EmployeSeeder');
+        $this->call('CongeSeeder');
+
 
     }
 }

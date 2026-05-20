@@ -38,3 +38,19 @@
 dashboard
     - absences du moi actuel
 
+# Suite du sujet 
+
+## admin
+### chart 
+[ok]- sauvegarde offline
+
+-> recuperer pour chaque conge les mois entre le debut et la fin du conge 
+    - exemple : 28/04 - 01/05 = 1 conge en mois d avril et un conge en mois de mai
+    - remplir les valeurs pour tous les mois et faire ++
+    
+- donnees explicatives : mois de l'annnee
+-> recuperer les donnees a afficher selon les mois selectionnes
+
+
+- donnees explicatives : jour de la semaine
+-> recuperer les donnees selons les jours

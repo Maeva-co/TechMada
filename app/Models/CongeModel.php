@@ -44,4 +44,34 @@ class CongeModel extends Model
                     ->orderBy('date_debut', 'DESC')
                     ->findAll();
     }
+
+    public function getCongePerMonth($idMonth){
+
+        $sql = " 
+        SELECT *
+        FROM conges
+        WHERE ? BETWEEN strftime('%m', date_debut)
+                    AND strftime('%m', date_fin)
+        ";
+        
+        $query = $this->db->query($sql, [$idMonth]);
+        return $query->getResultArray();
+
+    }
+
+    public function getCongeAllMonths(){
+        $months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+        $data = [];
+
+        foreach ($months as $m) {
+            $conges = $this->getCongePerMonth($m);
+            if ($conges) {
+                $data[] = count($conges);
+            } else {
+                $data[] = 0;
+            }
+        }
+        return $data;
+
+    }
 }

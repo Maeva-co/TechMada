@@ -4,13 +4,18 @@ namespace App\Controllers;
 
 use App\Models\EmployeModel;
 use App\Models\DepartementModel;
+use App\Models\CongeModel;
+
 
 class AdminController extends BaseController
 {
     public function dashboard()
     {
-
-        return view('admin/dashboard');
+        $congeModel = new CongeModel();
+        $dataMonth = $congeModel->getCongeAllMonths();
+        return view('admin/dashboard', [
+            'dataMonth' => $dataMonth
+        ]);
     }
 
     public function employes()

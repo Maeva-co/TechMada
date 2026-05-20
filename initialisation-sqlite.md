@@ -31,7 +31,7 @@
 
 
 
-### debug
+# debug
 ``` 
 unning all new migrations...
 [CodeIgniter\Database\Exceptions\DatabaseException]
@@ -51,6 +51,17 @@ at SYSTEMPATH/Database/BaseConnection.php:865
 -> dans Datapase.php : 'foreignKeys'  => true,
 -> simplifier les foreign keys
 
+## recup le resultat d une requete CI
+
+``` CRITICAL - 2026-05-20 08:37:27 --> Error: Call to undefined method CodeIgniter\Database\SQLite3\Result::result() ```
+
+-> la methode result n'existe pas 
+``` $query->resultArray() ```
+
+-> 
+
+#SQLITE
+
 ## creer seeders
 ```php spark make:seeder DepartementSeeder```
 
@@ -62,3 +73,5 @@ at SYSTEMPATH/Database/BaseConnection.php:865
 ``` wget https://cdn.exemple.com/script.js ```
 ou
 ``` curl -O https://cdn.exemple.com/script.js ```
+
+

@@ -42,7 +42,7 @@ dashboard
 
 ## admin
 ### chart 
-- sauvegarde offline
+[ok]- sauvegarde offline
 
 -> recuperer pour chaque conge les mois entre le debut et la fin du conge 
     - exemple : 28/04 - 01/05 = 1 conge en mois d avril et un conge en mois de mai

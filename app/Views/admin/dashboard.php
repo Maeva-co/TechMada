@@ -184,6 +184,7 @@
 
         <div class="container">
             <h1>Statistiques des ventes mensuelles</h1>
+            <?php var_dump($dataMonth) ?>
             <canvas id="salesChart"></canvas>
         </div>
 
@@ -199,6 +200,11 @@
 <script>
     const ctx = document.getElementById('salesChart');
 
+    let dataset = [];
+<?php foreach ($dataMonth as $dt) { ?>
+    dataset.push(<?= $dt ?>);
+<?php } ?>
+    
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -208,11 +214,17 @@
                 'Mars',
                 'Avril',
                 'Mai',
-                'Juin'
+                'Juin', 
+                'Juillet',
+                'Aout', 
+                'Septembre', 
+                'Octobre',
+                'Novembre',
+                'Décembre'
             ],
             datasets: [{
-                label: 'Ventes',
-                data: [120, 190, 90, 220, 150, 300],
+                label: 'Conges',
+                data: dataset,
                 backgroundColor: [
                     '#3498db',
                     '#2ecc71',

@@ -20,6 +20,7 @@ $routes->group('employe', ['filter' => ['auth', 'role:employe']], function($rout
     $routes->post('store', 'EmployeController::store');
     $routes->get('index', 'EmployeController::index');
     $routes->get('cancel/(:num)', 'EmployeController::cancel/$1');
+    $routes->get('calendar', 'EmployeController::calendar');
 });
 
 // Routes RH (authentifié + rôle)

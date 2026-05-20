@@ -23,7 +23,7 @@
         </div>
         <div class="sidebar-section">Menu</div>
         <ul class="sidebar-nav">
-        <li><a href="/employe/dashboard" class="active"><i class="bi bi-grid-1x2"></i> Tableau de bord</a></li>
+        <li><a href="/employe/dashboard"><i class="bi bi-grid-1x2"></i> Tableau de bord</a></li>
         <li><a href="/employe/create"><i class="bi bi-plus-circle"></i> Nouvelle demande</a></li>
         <li>
             <a href="/employe/index">
@@ -31,6 +31,7 @@
             <span class="nav-badge alert">2</span>
             </a>
         </li>
+        <li><a href="/employe/calendar" class="active"><i class="bi bi-calendar3"></i> Calendrier </a></li>
         <li><a href="#page-profil-employe"><i class="bi bi-person"></i> Mon profil</a></li>
         <li><a href="<?= base_url('auth/logout') ?>" style="margin-left:auto;color:rgba(255,255,255,.25);font-size:1.1rem"><i class="bi bi-box-arrow-right"></i>Déconnexion</a></li>
         </ul>

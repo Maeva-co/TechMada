@@ -102,7 +102,6 @@ class EmployeController extends BaseController {
     }
 
 
-
     public function dashboard() {
         $userId = session()->get('user_id');
 
@@ -124,6 +123,29 @@ class EmployeController extends BaseController {
         ];
 
         return view('employe/dashboard', $data);
+    }
+
+    public function calendar() {
+        $userId = session()->get('user_id');
+
+        $congeModel = new CongeModel();
+        $listConge = $congeModel->getByEmploye($userId);
+
+         $events = [];
+
+        foreach ($listConge as $conge) {
+            $events[] = [
+                'title' => $conge['motif'],
+                'start' => $conge['date_debut'],
+                'end' => $conge['date_fin'],
+            ];
+        }
+
+        $data = [
+            'events' => $events
+        ];
+        
+        return view('employe/calendar', $data);
     }
     
 }

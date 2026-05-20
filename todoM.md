@@ -185,4 +185,26 @@
 
 ## Suite
 - Cote Employe
-    - Vue calendrier
+    - Vue calendrier: afficher les conges sous forme de calendrier hebdomadaire interactif.
+        - CongeModel
+            - [ok] Foncion getByEmploye($idEmploye)
+        - EmployeController
+            - creer fonction calendar()
+                - [ok] appeler la fonction getByEmploye(Session['id])
+                - [ok] Creer un tableau event avec comme colonne:
+                    - title: motif dans table
+                    - start: date_debut dans table
+                    - end: date_fin dans table
+                - [ok] mettre dans un tableau de meme format que celui dans calendar.html
+                - [ok] rajouter le tableau dans data I guess
+                - [ok] retourner vers calendar.php avec data
+        - Routes.php
+            - [ok] rajouter une route dans le groupe employe
+                get('calendar, 'EmployeController::calendar')
+        - calendar.php
+            - ctrl+c et ctrl+v ce dont on a besoin dans calendar.html
+            - boucler le tableau precedemment cree au lieu de faire le js
+
+            - telecharger le script et le css index.global.min.x pour que ce soit fonctionnel offline
+        - global
+            - [ok] rajouter dans le navbar "Calendrier" avec comme lien /calendar

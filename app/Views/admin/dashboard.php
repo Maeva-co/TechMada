@@ -9,6 +9,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
     <script src="<?= base_url('js/app.js') ?>"></script>
+
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f5f7fa;
+                margin: 0;
+                padding: 30px;
+            }
+
+            .container {
+                width: 900px;
+                margin: auto;
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            canvas {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
 </head>
 
 <body>
@@ -59,98 +86,107 @@
 
         <div class="content">
 
-        <!-- Métriques admin -->
-        <div class="metrics">
-            <div class="metric">
-            <div class="metric-top"><div class="metric-icon mi-forest"><i class="bi bi-people"></i></div></div>
-            <div class="metric-val">24</div>
-            <div class="metric-label">Employés actifs</div>
-            <div class="metric-sub up"><i class="bi bi-arrow-up-short"></i> +2 ce mois</div>
+            <!-- Métriques admin -->
+            <div class="metrics">
+                <div class="metric">
+                <div class="metric-top"><div class="metric-icon mi-forest"><i class="bi bi-people"></i></div></div>
+                <div class="metric-val">24</div>
+                <div class="metric-label">Employés actifs</div>
+                <div class="metric-sub up"><i class="bi bi-arrow-up-short"></i> +2 ce mois</div>
+                </div>
+                <div class="metric">
+                <div class="metric-top"><div class="metric-icon mi-amber"><i class="bi bi-hourglass-split"></i></div></div>
+                <div class="metric-val">4</div>
+                <div class="metric-label">Demandes en attente</div>
+                </div>
+                <div class="metric">
+                <div class="metric-top"><div class="metric-icon mi-green"><i class="bi bi-calendar-check"></i></div></div>
+                <div class="metric-val">31</div>
+                <div class="metric-label">Approuvées ce mois</div>
+                <div class="metric-sub up"><i class="bi bi-arrow-up-short"></i> +6 vs mois dernier</div>
+                </div>
+                <div class="metric">
+                <div class="metric-top"><div class="metric-icon mi-blue"><i class="bi bi-building"></i></div></div>
+                <div class="metric-val">4</div>
+                <div class="metric-label">Départements</div>
+                </div>
+                <div class="metric">
+                <div class="metric-top"><div class="metric-icon mi-red"><i class="bi bi-person-slash"></i></div></div>
+                <div class="metric-val">3</div>
+                <div class="metric-label">Absents aujourd'hui</div>
+                </div>
             </div>
-            <div class="metric">
-            <div class="metric-top"><div class="metric-icon mi-amber"><i class="bi bi-hourglass-split"></i></div></div>
-            <div class="metric-val">4</div>
-            <div class="metric-label">Demandes en attente</div>
+
+            <div style="display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start">
+
+                <!-- Demandes récentes -->
+                <div class="data-card" style="margin:0">
+                <div class="data-card-head">
+                    <h3>Demandes récentes</h3>
+                    <a href="#page-liste-rh" style="font-size:.8rem;color:var(--forest);text-decoration:none">Tout voir →</a>
+                </div>
+                <table class="tbl">
+                    <thead>
+                    <tr><th>Employé</th><th>Type</th><th>Durée</th><th>Statut</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-green" style="width:28px;height:28px;font-size:.62rem">SR</div><span class="td-name" style="font-size:.84rem">Soa Rakoto</span></div></td>
+                        <td><span class="type-badge t-annuel">Annuel</span></td>
+                        <td class="td-mono">5 j</td>
+                        <td><span class="statut s-attente">en attente</span></td>
+                    </tr>
+                    <tr>
+                        <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-amber" style="width:28px;height:28px;font-size:.62rem">TF</div><span class="td-name" style="font-size:.84rem">Tsiry Fidy</span></div></td>
+                        <td><span class="type-badge t-maladie">Maladie</span></td>
+                        <td class="td-mono">2 j</td>
+                        <td><span class="statut s-attente">en attente</span></td>
+                    </tr>
+                    <tr>
+                        <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-blue" style="width:28px;height:28px;font-size:.62rem">HA</div><span class="td-name" style="font-size:.84rem">Haja Andria</span></div></td>
+                        <td><span class="type-badge t-annuel">Annuel</span></td>
+                        <td class="td-mono">5 j</td>
+                        <td><span class="statut s-approuvee">approuvée</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <!-- Absents du jour + soldes critiques -->
+                <div style="display:flex;flex-direction:column;gap:1rem">
+                <div class="data-card" style="margin:0">
+                    <div class="data-card-head"><h3><i class="bi bi-person-slash" style="color:var(--muted);margin-right:5px"></i>Absents aujourd'hui</h3></div>
+                    <div style="padding:.75rem 1.1rem;display:flex;flex-direction:column;gap:.6rem">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="avatar av-green" style="width:30px;height:30px;font-size:.65rem">SR</div>
+                        <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Soa Rakoto</div><div style="font-size:.72rem;color:var(--muted)">Congé annuel · retour 28/06</div></div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="avatar" style="width:30px;height:30px;font-size:.65rem;background:#993556">NR</div>
+                        <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Noro Ramarao</div><div style="font-size:.72rem;color:var(--muted)">Maladie · retour 17/06</div></div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="avatar av-amber" style="width:30px;height:30px;font-size:.65rem">KF</div>
+                        <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Ketaka Feno</div><div style="font-size:.72rem;color:var(--muted)">Congé spécial · retour 16/06</div></div>
+                    </div>
+                    </div>
+                </div>
+                <div class="flash flash-warn" style="margin:0">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span style="font-size:.8rem">2 employés ont un solde critique (≤ 2 jours). <a href="#" style="color:var(--warn);font-weight:500">Voir les soldes →</a></span>
+                </div>
+                </div>
+
             </div>
-            <div class="metric">
-            <div class="metric-top"><div class="metric-icon mi-green"><i class="bi bi-calendar-check"></i></div></div>
-            <div class="metric-val">31</div>
-            <div class="metric-label">Approuvées ce mois</div>
-            <div class="metric-sub up"><i class="bi bi-arrow-up-short"></i> +6 vs mois dernier</div>
-            </div>
-            <div class="metric">
-            <div class="metric-top"><div class="metric-icon mi-blue"><i class="bi bi-building"></i></div></div>
-            <div class="metric-val">4</div>
-            <div class="metric-label">Départements</div>
-            </div>
-            <div class="metric">
-            <div class="metric-top"><div class="metric-icon mi-red"><i class="bi bi-person-slash"></i></div></div>
-            <div class="metric-val">3</div>
-            <div class="metric-label">Absents aujourd'hui</div>
-            </div>
+
+        <!-- Integration charte -->
+        <script src="<?= base_url('js/chart.js') ?>"></script>
+
+        <div class="container">
+            <h1>Statistiques des ventes mensuelles</h1>
+            <canvas id="salesChart"></canvas>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start">
-
-            <!-- Demandes récentes -->
-            <div class="data-card" style="margin:0">
-            <div class="data-card-head">
-                <h3>Demandes récentes</h3>
-                <a href="#page-liste-rh" style="font-size:.8rem;color:var(--forest);text-decoration:none">Tout voir →</a>
-            </div>
-            <table class="tbl">
-                <thead>
-                <tr><th>Employé</th><th>Type</th><th>Durée</th><th>Statut</th></tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-green" style="width:28px;height:28px;font-size:.62rem">SR</div><span class="td-name" style="font-size:.84rem">Soa Rakoto</span></div></td>
-                    <td><span class="type-badge t-annuel">Annuel</span></td>
-                    <td class="td-mono">5 j</td>
-                    <td><span class="statut s-attente">en attente</span></td>
-                </tr>
-                <tr>
-                    <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-amber" style="width:28px;height:28px;font-size:.62rem">TF</div><span class="td-name" style="font-size:.84rem">Tsiry Fidy</span></div></td>
-                    <td><span class="type-badge t-maladie">Maladie</span></td>
-                    <td class="td-mono">2 j</td>
-                    <td><span class="statut s-attente">en attente</span></td>
-                </tr>
-                <tr>
-                    <td><div style="display:flex;align-items:center;gap:7px"><div class="avatar av-blue" style="width:28px;height:28px;font-size:.62rem">HA</div><span class="td-name" style="font-size:.84rem">Haja Andria</span></div></td>
-                    <td><span class="type-badge t-annuel">Annuel</span></td>
-                    <td class="td-mono">5 j</td>
-                    <td><span class="statut s-approuvee">approuvée</span></td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-
-            <!-- Absents du jour + soldes critiques -->
-            <div style="display:flex;flex-direction:column;gap:1rem">
-            <div class="data-card" style="margin:0">
-                <div class="data-card-head"><h3><i class="bi bi-person-slash" style="color:var(--muted);margin-right:5px"></i>Absents aujourd'hui</h3></div>
-                <div style="padding:.75rem 1.1rem;display:flex;flex-direction:column;gap:.6rem">
-                <div style="display:flex;align-items:center;gap:8px">
-                    <div class="avatar av-green" style="width:30px;height:30px;font-size:.65rem">SR</div>
-                    <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Soa Rakoto</div><div style="font-size:.72rem;color:var(--muted)">Congé annuel · retour 28/06</div></div>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px">
-                    <div class="avatar" style="width:30px;height:30px;font-size:.65rem;background:#993556">NR</div>
-                    <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Noro Ramarao</div><div style="font-size:.72rem;color:var(--muted)">Maladie · retour 17/06</div></div>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px">
-                    <div class="avatar av-amber" style="width:30px;height:30px;font-size:.65rem">KF</div>
-                    <div><div style="font-size:.83rem;font-weight:500;color:var(--ink)">Ketaka Feno</div><div style="font-size:.72rem;color:var(--muted)">Congé spécial · retour 16/06</div></div>
-                </div>
-                </div>
-            </div>
-            <div class="flash flash-warn" style="margin:0">
-                <i class="bi bi-exclamation-triangle-fill"></i>
-                <span style="font-size:.8rem">2 employés ont un solde critique (≤ 2 jours). <a href="#" style="color:var(--warn);font-weight:500">Voir les soldes →</a></span>
-            </div>
-            </div>
-
-        </div>
 
         </div>
         <div class="footer-app"><i class="bi bi-c-circle"></i> 2025 <span>TechMada RH</span></div>
@@ -158,4 +194,49 @@
 
     </div>
     </section>
+
+<!--  Script  js chart -->
+<script>
+    const ctx = document.getElementById('salesChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                'Janvier',
+                'Février',
+                'Mars',
+                'Avril',
+                'Mai',
+                'Juin'
+            ],
+            datasets: [{
+                label: 'Ventes',
+                data: [120, 190, 90, 220, 150, 300],
+                backgroundColor: [
+                    '#3498db',
+                    '#2ecc71',
+                    '#f39c12',
+                    '#9b59b6',
+                    '#e74c3c',
+                    '#1abc9c'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 </body>

@@ -56,3 +56,9 @@ at SYSTEMPATH/Database/BaseConnection.php:865
 
 ## lancer seeders
 ``` php spark db:seed MainSeeder ```
+
+
+## telecharger js depuis terminal
+``` wget https://cdn.exemple.com/script.js ```
+ou
+``` curl -O https://cdn.exemple.com/script.js ```

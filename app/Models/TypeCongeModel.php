@@ -15,6 +15,8 @@ class TypeCongeModel extends Model
         'deductible'
     ];
 
+    protected $returnType = 'array';
+
     public function getAllTypes() {
         return $this->findAll();
     }

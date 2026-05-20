@@ -17,6 +17,8 @@ class SoldeModel extends Model
         'jours_pris'
     ];
 
+    protected $returnType = 'array';
+
     public function getByEmploye($employeId) {
         return $this->select('soldes.*, types_conge.libelle')
             ->join('types_conge', 'types_conge.id = soldes.type_conge_id')
